@@ -1,3 +1,5 @@
+from time import sleep
+
 class SelectOne():
 	def __init__(self, arg):
 		self.arg = arg
@@ -11,6 +13,8 @@ class SelectOne():
 			'white' : 47,
 		}
 
+		self.result = None
+
 
 		self.argChk()
 		
@@ -19,8 +23,10 @@ class SelectOne():
 		return self.result
 
 	def argChk(self):
-		if(isinstance(self.arg, str)):
-			self.labels = self.arg.labels
+		if(isinstance(self.arg, list)):
+			self.labels = self.arg
+			# self.color = self.colors['black']
+			# self.bgcolor = self.bgcolors['white']
 			return
 
 		#axis : x, y
@@ -28,20 +34,28 @@ class SelectOne():
 	# main
 	def startSelect(self):
 		self.render()
-		self.
+		# self.
 
-		self.result
+		# self.result
 
 	def render(self):
-		for label in self.labels:
+
+		for i, label in enumerate(self.labels):
+			if self.cursor == i:
+				self.bgOn()
+				print(label, end = '')
+				self.bgOff()
+				print('')
+			else:
+				print(label)
 
 
 	def bgOn(self):
-		print('\033[{}m'.format(self.color), end='')
-		print('\033[{}m'.format(self.bgcolor), end='')
+		print('\033[{}m'.format(self.colors['black']), end='')
+		print('\033[{}m'.format(self.bgcolors['white']), end='')
 	
 	def bgOff(self):
-		print('\033[{}m'.format(self.color), end='')
-		print('\033[{}m'.format(self.bgcolor), end='')
+		print('\033[{}m'.format(self.colors['white']), end='')
+		print('\033[{}m'.format(self.bgcolors['black']), end='')
 
-print(SelectOne("a","b","c"))
+SelectOne(["a","b","c"])

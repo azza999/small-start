@@ -1,3 +1,5 @@
-a = {'a':'a'}
+from time import sleep
 
-print(isinstance(a, dict))
+print("wait 5 seconds...")
+sleep(5)
+print("done!")

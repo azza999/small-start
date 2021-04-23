@@ -47,3 +47,16 @@ for key in _dict:
 	print(_dict[key])
 </code>
 </pre>
+
+## in을 사용한 array 순회
+
+기본적으로 dict 순회와 동일.
+
+하지만 enumerate를 이용하여 index 번호를 알 수 있음.
+
+<pre>
+<code>
+for idx, item in enumerate(['a','b','c']):
+	print('idx: {}, item: {}'.format(idx,item))
+</code>
+</pre>
