@@ -48,7 +48,7 @@ for key in _dict:
 </code>
 </pre>
 
-## in을 사용한 array 순회
+## in을 사용한 list 순회
 
 기본적으로 dict 순회와 동일.
 
@@ -60,3 +60,48 @@ for idx, item in enumerate(['a','b','c']):
 	print('idx: {}, item: {}'.format(idx,item))
 </code>
 </pre>
+
+## sleep
+
+time 라이브러리를 사용한다.
+
+<pre>
+<code>
+from time import sleep
+
+print("wait 5 seconds...")
+sleep(5)
+print("done!")
+</code>
+</pre>
+
+## 파이썬 키보드 키값으로 입력받기
+
+keyboard 라이브러리를 사용한다.
+
+<pre>
+<code>
+import keyboard
+import time
+
+while True:
+		if keyboard.is_pressed(75):
+			print("Left")
+			time.sleep(0.1)
+		if keyboard.is_pressed(77):
+			print("Right")
+			time.sleep(0.1)
+		if keyboard.is_pressed(80):
+			print("Down")
+			time.sleep(0.1)
+		if keyboard.is_pressed(72):
+			print("Up")
+			time.sleep(0.1)
+		if keyboard.is_pressed(13):
+			print("enter")
+			time.sleep(0.1)
+</code>
+</pre>
+
+키보드 입력값은 정수 혹은 문자열이 될 수 있다.
+`print(keyboard.key_to_scan_codes('up'))` 메서트를 통해 문자열과 키코드 매핑을 확인할 수 있다.

@@ -1,4 +1,6 @@
 from time import sleep
+import os
+import keyboard
 
 class SelectOne():
 	def __init__(self, arg):
@@ -11,6 +13,12 @@ class SelectOne():
 		self.bgcolors = {
 			'black' : 40,
 			'white' : 47,
+		}
+		self.keys = {
+			'up' : 72,
+			'down' : 80,
+			'left' : 74,
+			'right' : 76
 		}
 
 		self.result = None
@@ -34,12 +42,11 @@ class SelectOne():
 	# main
 	def startSelect(self):
 		self.render()
-		# self.
+		self.detectChange()
 
-		# self.result
 
 	def render(self):
-
+		os.system('cls')
 		for i, label in enumerate(self.labels):
 			if self.cursor == i:
 				self.bgOn()
@@ -57,5 +64,11 @@ class SelectOne():
 	def bgOff(self):
 		print('\033[{}m'.format(self.colors['white']), end='')
 		print('\033[{}m'.format(self.bgcolors['black']), end='')
+
+	def detectchange(self):
+		while 1:
+			if keyboard.is_pressed(72):
+				self.cursor += 1
+				pass
 
 SelectOne(["a","b","c"])
