@@ -21,18 +21,14 @@ class SelectOne():
 			'right' : 76
 		}
 
-		self.result = None
-
-
 		self.argChk()
 		
-		self.startSelect()
-
-		return self.result
+		return
 
 	def argChk(self):
 		if(isinstance(self.arg, list)):
 			self.labels = self.arg
+			self.cursorMax = len(self.labels) - 1
 			# self.color = self.colors['black']
 			# self.bgcolor = self.bgcolors['white']
 			return
@@ -40,9 +36,11 @@ class SelectOne():
 		#axis : x, y
 
 	# main
-	def startSelect(self):
-		self.render()
-		self.detectChange()
+	def start(self):
+		while 1:
+			self.render()
+			if self.detectKey() == 'exit':
+				return self.labels[self.cursor]
 
 
 	def render(self):
@@ -56,7 +54,6 @@ class SelectOne():
 			else:
 				print(label)
 
-
 	def bgOn(self):
 		print('\033[{}m'.format(self.colors['black']), end='')
 		print('\033[{}m'.format(self.bgcolors['white']), end='')
@@ -65,10 +62,29 @@ class SelectOne():
 		print('\033[{}m'.format(self.colors['white']), end='')
 		print('\033[{}m'.format(self.bgcolors['black']), end='')
 
-	def detectchange(self):
+	def detectKey(self):
 		while 1:
-			if keyboard.is_pressed(72):
-				self.cursor += 1
-				pass
+			if keyboard.is_pressed('Up'):
+				self.cursorPrev()
+				sleep(0.1)
+				return
 
-SelectOne(["a","b","c"])
+			if keyboard.is_pressed('Down'):
+				self.cursorNext()
+				sleep(0.1)
+				return
+
+			if keyboard.is_pressed('Enter'):
+				sleep(0.1)
+				return 'exit'
+
+	def cursorPrev(self):
+		self.cursor = self.cursorMax if self.cursor <= 0 else self.cursor - 1
+
+	def cursorNext(self):
+		self.cursor = 0 if self.cursor + 1 > self.cursorMax else self.cursor + 1
+
+
+select = SelectOne(["a","b","c"])
+
+print(select.start())

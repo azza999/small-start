@@ -104,4 +104,5 @@ while True:
 </pre>
 
 키보드 입력값은 정수 혹은 문자열이 될 수 있다.
-`print(keyboard.key_to_scan_codes('up'))` 메서트를 통해 문자열과 키코드 매핑을 확인할 수 있다.
+`print(keyboard.key_to_scan_codes('up'))` 메서드를 통해 문자열과 키코드 매핑을 확인할 수 있다.
+
