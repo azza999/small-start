@@ -12,3 +12,12 @@ DataFrame.describe()
 
 </code>
 </pre>
+
+
+## 데이터프레임 컬럼 뽑아내기
+
+<pre>
+<code>
+
+</code>
+</pre>

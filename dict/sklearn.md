@@ -121,13 +121,27 @@ print(DecesionTreeClassifier.feature_importances_)
 
 ## 교차 검정
 
-훈련 세트를 한번만 만들어 사용하고, 테스트 세트로만 점수를 평가할 수 있다면 훈련 세트와 테스트 세트에 과대적합된 모델이 될 것이다. 이럴때 주어진 데이터를 K번 분할해서 서로 교차로 훈련 세트와 검증 세트로 사용하는 것이 K-폴드 교차 검증이다. 사이킷전에서는 이를 위한 내장 객체인 cross_validate를 사용한다.
+훈련 세트를 한번만 만들어 사용하고, 테스트 세트로만 점수를 평가할 수 있다면 훈련 세트와 테스트 세트에 과대적합된 모델이 될 것이다. 이럴때 주어진 데이터를 K번 분할해서 서로 교차로 훈련 세트와 검증 세트로 사용하는 것이 K-폴드 교차 검증이다. 사이킷전에서는 이를 위한 내장 메서드인 cross_validate를 사용한다.
 
 <pre>
 <code>
 from sklearn.model_selection import cross_validate
 
-scores = cross_validate(dt, train_input, train_target)
+# 교차 검정을 진행할 횟수 지정
+n = 10
+scores = cross_validate(dt, train_input, train_target, cv=n)
 print(scores)
+</code>
+</pre>
+
+## Splitter
+
+교차 검정을 진행할 때, 기본적으로 cross_validate 메서드는 순서대로 자료를 나눈다. 따라서 교차 검증시 이 자료들을 골고루 섞어줄 필요가 있는데, 이는 cross_validate 메서드의 교차 검증 횟수를 담당하는 cv 매개 변수에 Splitter 객체를 담아서 메서드를 호출하면 된다.
+
+<pre>
+<code>
+from sklearn.model_selection import cross_validate, StratifiedKFold
+
+cross_validate(dt, train_input, train_target, cv = StratifiedKFold())
 </code>
 </pre>
