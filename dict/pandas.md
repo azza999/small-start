@@ -18,6 +18,13 @@ DataFrame.describe()
 
 <pre>
 <code>
+# data의 컬럼 : name, age, sex, hobby, job
+
+basic = dt[['name','age']]
+# basic : name, age
+
+jobs = dt[['job']]
+# jobs : job
 
 </code>
 </pre>
