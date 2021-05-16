@@ -145,3 +145,45 @@ from sklearn.model_selection import cross_validate, StratifiedKFold
 cross_validate(dt, train_input, train_target, cv = StratifiedKFold())
 </code>
 </pre>
+
+
+## 그리드 서치
+
+훈련 알고리즘을 사용할 때, 각 알고리즘별로 필요한 '사람이 개입하는' 값(하이퍼파라미터)들이 있다. 예를 들면 결정 트리 모델에서의 깊이를 나타내는 max_depth 인자라던지, 최근접 이웃 분류에서 인접 값들의 범위인 n_neighbors, LogisticRegression의 규제를 제어하는 C 등 한번의 알고리즘 수행에도 많은 하이퍼파라미터가 사용된다. 이때 하이퍼 파라미터는 한개씩 개별적으로 설정하지만, 이 값들은 다른 값들에도 영향을 미친다. 따라서 이 값들에 대한 세팅을 그리드처럼 펼쳐놓고, 각각의 시점을 시험해 보아야 한다. 이 과정을 '그리드 서치'라고 한다.
+
+<pre>
+<code>
+# 그리드 서치 수행
+
+from sklearn.model_selection import GridSearchCV
+from sklearn.tree import DecisionTreeClassifier
+
+# min_impurity_decrease : 노드를 분할하기 위한 불순도 감소 최소량
+params = {
+	'min_impurity_decrease': np.range(0.0001, 0.001, 0.0001),
+	'max_depth': range(5, 20, 1),
+	'min_samples_split': range(2, 100 ,10)
+}
+
+gs = GridSearchCV(DecisionTreeClassifier(random_state=42), params, n_jobs=-1, cv=5)
+
+gs.fit(train_input, train_target)
+
+#최적의 결과 보기
+
+# 최적의 훈련 알고리즘 (일반 훈련 객체처럼 사용 가능)
+print(gs.best_estimator_)
+
+# 인자로 전달한 값들 중 최적의 하이퍼파라미터
+print(gs.best_params_)
+
+# 전달한 값들의 평균점수
+print(gs.cv_results_['mean_test_score'])
+
+</code>
+</pre>
+
+매개변수 | 비고
+n_jobs | 병렬 처리에 사용할 CPU 코어 수 (-1은 전부 사용을 의미)
+cv | 교차 검증할때 사용할 폴드 수 (기본값은 5)
+
