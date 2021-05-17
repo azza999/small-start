@@ -160,7 +160,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 # min_impurity_decrease : 노드를 분할하기 위한 불순도 감소 최소량
 params = {
-	'min_impurity_decrease': np.range(0.0001, 0.001, 0.0001),
+	'min_impurity_decrease': np.arange(0.0001, 0.001, 0.0001),
 	'max_depth': range(5, 20, 1),
 	'min_samples_split': range(2, 100 ,10)
 }
