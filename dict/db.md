@@ -37,7 +37,7 @@ example) 식별관계
 
 직원은 반드시 부서에 속해야 함
 
-![식별 관계](https://github.com/azza999/small-start/assets/identification.png)
+![식별 관계](https://github.com/azza999/small-start/blob/main/assets/identification.png)
 
 2. **비식별 관계**
 부모 테이블의 기본키가 자식 테이블의 기본키로 사용되지 않을 떄
@@ -50,4 +50,4 @@ example) 비식별관계
 
 직원은 부서에 포함되지 않을 수 있음
 
-![비식별 관계](https://github.com/azza999/small-start/assets/non-identification.png)
+![비식별 관계](https://github.com/azza999/small-start/blob/main/assets/non-identification.png)
