@@ -26,15 +26,13 @@
 
 ## 식별 관계와 비식별 관계
 
-1. **식별 관계**
+1.**식별 관계**
 부모 테이블의 기본키가 자식 테이블의 외래키이면서 기본키일때
-
 자식 테이블에 행을 추가할 때, 부모 테이블의 기본키를 반드시 사용해야 함
 
-example) 식별관계
-부모 테이블 : 부서
-자식 테이블 : 직원
-
+example) 식별관계  
+부모 테이블 : 부서  
+자식 테이블 : 직원  
 직원은 반드시 부서에 속해야 함
 
 ![식별 관계](https://github.com/azza999/small-start/blob/main/assets/identification.png)
@@ -44,10 +42,9 @@ example) 식별관계
 
 자식 테이블의 행은 부모 테이블로부터 독립적으로 존재할 수 있음
 
-example) 비식별관계
-부모 테이블 : 부서
-자식 테이블 : 직원
-
-직원은 부서에 포함되지 않을 수 있음
+example) 비식별관계  
+부모 테이블 : 부서  
+자식 테이블 : 직원  
+직원은 부서에 포함되지 않을 수 있음  
 
 ![비식별 관계](https://github.com/azza999/small-start/blob/main/assets/non-identification.png)
