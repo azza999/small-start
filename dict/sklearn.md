@@ -187,3 +187,33 @@ print(gs.cv_results_['mean_test_score'])
 n_jobs | 병렬 처리에 사용할 CPU 코어 수 (-1은 전부 사용을 의미)
 cv | 교차 검증할때 사용할 폴드 수 (기본값은 5)
 
+## 랜덤 서치
+
+그리드 서치를 실행할 때, 하이퍼 파라미터의 범위 또한 결국 인위적으로 설정된 값이다. 따라서 이 값을 보다 랜덤하게 실행하기 위해서 랜덤 서치를 사용한다.
+
+<pre>
+<code>
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from scipy.stats import uniform, randint
+
+params = {'min_impurity_decrease': uniform(0.0001, 0.001),
+		  'max_depth': randint(20, 50),
+		  'min_samples_split': randint(2, 25),
+		  'min_samples_leaf': randint(1,25)
+		}
+
+gs = RandomizedSearchCV(DicisionTreeClassifier(), params, n_iter=100, n_jobs=-1)
+gs.fit(train_input, train_target)
+
+print(gs.best_estimator_.score(test_input, test_target))
+
+'''
+최적의 알고리즘	: best_estimator_
+최적의 파라미터	: best_params_
+결과값			: cv_results_
+
+'''
+
+</code>
+</pre>
