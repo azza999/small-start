@@ -48,3 +48,5 @@ example) 비식별관계
 직원은 부서에 포함되지 않을 수 있음  
 
 ![비식별 관계](https://github.com/azza999/small-start/blob/main/assets/non-identification.png)
+
+
