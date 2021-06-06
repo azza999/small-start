@@ -19,4 +19,4 @@ _외부 단편화_
 * accounting (CPU 사용시간)
 * memory pointer (메모리 관리 정보)
 * 입출력 상태 정보
-* 할당된 자원 정보
+* 할당된 자원 정보git 
