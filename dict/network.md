@@ -12,11 +12,11 @@
 
 ### LG bit와 IG bit (TCP)
 
-_LG bit_
+**LG bit**
 
 Default MAC 주소인지 자체적으로 부여한 주소인지를 식별하는 FLAG
 
-_IG BIT_
+**IG BIT**
 
 TCP에서 멀티캐스트 통신과 유니캐스트 통신을 구분하는 FLAG
 
@@ -30,60 +30,60 @@ LG bit가 변한다면 이미 변한 MAC 주소이고, IG bit가 변할 때는 �
 
 포트는 우리말로 항구이다. 소프트웨어가 들어오는 데이터를 실은 화물선을 위해 열어두는 항구이다. 포트의 구성은 다음과 같다.
 
-_Well-Known Port (0 ~ 1023)_
+**Well-Known Port (0 ~ 1023)**
 잘-알려진 포트는 강제적이지 않지만, 주로 사용되는 포트들이다. 대부분의 유닉스 계열의 운영체제의 경우 root 권한 없이는 사용할 수 없다.
 
-_Registerd Port (1024 ~ 49151)_
+**Registerd Port (1024 ~ 49151)**
 예약된 포트는 운영체제에서 지속적으로 서비스해야하는 프로세스가 주로 사용하는 포트이다.
 
-_Dynamic Port (49152 ~ 65535)_
+**Dynamic Port (49152 ~ 65535)**
 동적 포트는 주로 요청할때 사용하는 비교적 주기가 짧은 포트이다.
 
-_참고 사항_
+**참고 사항**
 결론부터 말하자면 포트의 범위는 아무 상관 없다. ssh가 22번 포트를 사용하더라도, 일반 사용자들의 ssh 요청을 줄이기 위해 (물론 포트 스캐닝으로 쉽게 ssh가 어떤 포트를 사용하는지 알 수 있다.) 50293번 포트를 사용할 수도 있고, 기존의 22번 포트를 해당 포트에 접근한 사용자들을 파악하기 위한 보안 프로그램에 할당할 수도 있다. 포트번호는 그저 겹치지 않기만 하면 된다.
 
 
 ## TCP Flag
 
-_SYN (syncronization)_
+**SYN (syncronization)**
 연결 요청 플래그
 세션 정립시 가장 먼저 전송하고, 시퀀스 번호를 설정하고
 
-_ACK (Acknowledgement)_
+**ACK (Acknowledgement)**
 응답 플래그
 
-_RST (Reset)_
+**RST (Reset)**
 재설정 플래그
 비정상적인 세션을 종료할때 사용한다.
 
-_PSH (Push)_
+**PSH (Push)**
 밀어넣기 플래그
 일부 프로토콜의 경우(SSH 등) 빠른 응답이 필요한 경우가 있다. 이때 PSH 플래그가 활성화되어있으면, 받은 데이터를 계층에 따라 처리하는 것이 아닌 바로 7계층인 프로그램으로 전달한다.
 
-_URG (Urgent)_
+**URG (Urgent)**
 긴급 데이터 플래그
 다른 데이터보다 우선순위가 a높은 긴급 데이터를 전달할때 사용한다.
 
-_FIN (Finish)_
+**FIN (Finish)**
 연결 종료 플래그
 세션 연결을 종료하고, 더이상 전송할 데이터가 없을 때 사용한다.
 
 
 ## TCP sequence number, acknowledgement number
 
-_sequence number_
+**sequence number**
 시퀀스 넘버는 송신자가 보내는 data의 byte 순서이다.
 만약 30의 길이를 가진 데이터 3개를 보낼때, 첫 sequence number가 1이라면 첫 데이터의 시퀀스 넘버는 3, 두번째는 34, 세번째는 64가 된다.
 첫 시퀀스 넘버는 무작위로 지정된다. 또한 클라이언트측과 서버측의 시퀀스 넘버는 각각 지정된다.
 
-_acknowledgement number_
+**acknowledgement number**
 응답 번호는 sequence number에 1을 더해서 전송한다. sequence number로 1392가 들어왔다면, 응답 번호는 1393을 전송하는 식이다. 이는 1393번째(1393번째 byte) 데이터를 기다린다는 뜻이 된다.
 
 
 
 ## FTP (File Transport Protocol)
 
-_Active FTP vs Pasive FTP_
+**Active FTP vs Pasive FTP**
 
 FTP의 동작 모드는 두가지이다.
 
@@ -101,7 +101,7 @@ Passive FTP도 클라이언트의 요청까지는 같다. 하지만 서버는 21
 
 ### TFTP, SFTP, FTPS
 
-_TFTP_
+**TFTP**
 
 TFTP는 Trivial FTP로써 UDP 프로토콜로 파일 전송이 이루어진다. 따라서 파일의 무결성을 보장하지는 않지만, 더 빠르고 간단하게 이루어진다.
 
@@ -112,19 +112,19 @@ TFTP는 Trivial FTP로써 UDP 프로토콜로 파일 전송이 이루어진다. 
 마찬가지로 클라이언트는 파일과 함께 쓰기 요청을 보내고, 서버는 잘 받았다는 내용을 답신한다.
 
 
-_SFTP_
+**SFTP**
 
 sftp는 ssh의 FTP 버전이다. ssh와 동일하게 사전의 키 교환으로 암호화된 ssh 세션을 만들어 파일을 주고받는 프로토콜이다.
 
-_FTPS_
+**FTPS**
 
 ftps는 ssl의 FTP 버전이다. SSL와 동일하게 인증서를 통하여 메시지 교환에서 위/변조가 없음을 보장한다.
 
 
 ## SSH와 SSL의 차이 
 
-_SSH (Secure SHell)_
+**SSH (Secure SHell)**
 
 
-_SSL (Secure Sockets Layer)_
+**SSL (Secure Sockets Layer)**
  클라이언트가 서버에 접속하게되면, 서버는 클라이언트에게 인증서를 전송한다. 클라이언트는 인증서를 검증하고, 인증서의 공개키를 이용해 session key로 사용할 문자열을 서버에 공개키로 암호화 후 전송한다. 이를 이용해, 대칭키 암호화 방식으로 메세지를 암호화하여 교환한다.

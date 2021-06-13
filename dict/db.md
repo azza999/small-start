@@ -37,7 +37,7 @@ example) 식별관계
 
 ![식별 관계](https://github.com/azza999/small-start/blob/main/assets/identification.png)
 
-2. **비식별 관계**
+2. **비식별 관계**  
 부모 테이블의 기본키가 자식 테이블의 기본키로 사용되지 않을 떄
 
 자식 테이블의 행은 부모 테이블로부터 독립적으로 존재할 수 있음

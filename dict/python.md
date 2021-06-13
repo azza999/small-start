@@ -20,6 +20,7 @@
 	</tr>
 </table>
 
+
 ## class 타입 체크
 
 isinstance 사용
@@ -36,6 +37,7 @@ isinstance({"hi":"hello"}, dict)
 
 반환값 : True, False
 
+
 ## dict 순회
 
 in 사용
@@ -47,6 +49,7 @@ for key in _dict:
 	print(_dict[key])
 </code>
 </pre>
+
 
 ## in을 사용한 list 순회
 
@@ -61,6 +64,7 @@ for idx, item in enumerate(['a','b','c']):
 </code>
 </pre>
 
+
 ## sleep
 
 time 라이브러리를 사용한다.
@@ -74,6 +78,7 @@ sleep(5)
 print("done!")
 </code>
 </pre>
+
 
 ## 파이썬 키보드 키값으로 입력받기
 

@@ -29,6 +29,7 @@ jobs = dt[['job']]
 </code>
 </pre>
 
+
 ## numpy 배열에서 최고값 뽑기
 
 <pre>
@@ -39,6 +40,7 @@ arr = [1, 2, 3, 4, 5]
 np.argmax(arr)
 </code>
 </pre>
+
 
 ## np.arange 사용하기
 
@@ -53,6 +55,7 @@ small_number = np.arange(0.01, 0.1, 0.01)
 # small_number : [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09]
 </code>
 </pre>
+
 
 ## 불리언 인덱싱
 ---
