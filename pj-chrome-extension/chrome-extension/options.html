@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="button.css">
-  </head>
-  <body>
-    <div id="buttonDiv">
+<head>
+    <link rel="stylesheet" href="option-page.css">
+</head>
+<body>
+
+    <div id="columns">
+        <h2 class="title">기본 설정</h2>
+        <div class="row">
+            <label class="option"><span>가로영상을 세로로 재생</span><input id="hor2ver" type="checkbox"></label>
+            <label class="option"><span>세로영상을 가로로 재생</span><input id="ver2hor" type="checkbox"></label>
+            <label class="option"><span>옵션창 띄우기</span><input id="float-option" type="checkbox"></label>
+        </div>
     </div>
-    <div>
-      <p>Choose a different background color!</p>
-    </div>
-  </body>
-  <script src="options.js"></script>
+
+    <script src="option-page.js"></script>
+</body>
 </html>
