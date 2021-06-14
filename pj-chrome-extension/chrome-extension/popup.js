@@ -1,3 +1,4 @@
+/*
 // Initialize butotn with users's prefered color
 let changeColor = document.getElementById("changeColor");
 
@@ -24,3 +25,5 @@ function setPageBackgroundColor() {
 	});
 	
 }
+*/
+
