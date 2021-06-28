@@ -62,19 +62,29 @@ if ( typeof Object.create !== 'function' ) {
 
 		},
 		startRoll: function () {
+			// 추가
+			// 롤링
+			// 지우기
+
 			let self = this
-			setTimeout(function() {
-				self.addNextElement();
+			return new Promise((res,rej)=>{
 				setTimeout(function() {
-					self.rollOnce();
-				}, 50)
-				setTimeout(function() {
-					self.removePreElement();
-				}, self.options.speed*10000-1)
-			}, this.options.speed*10000)
+					self.addNextElement();
+					setTimeout(function() {
+						self.rollOnce();
+					}, 50)
+					setTimeout(function() {
+						self.removePreElement();
+						res()
+					}, self.options.speed*1000-1)
+				}, this.options.speed*1000)
+			})
 			
 		},
 		addNextElement: function () {
+
+			// 추가
+
 			this.cursor = this.cursor < this.list.length ? this.cursor + 1 : 0;
 			
 			this.element.append(this.elementList[this.cursor]);
@@ -87,10 +97,17 @@ if ( typeof Object.create !== 'function' ) {
 			this.elementList[this.cursor].style.transitionDuration = this.options.speed + 's';
 		},
 		rollOnce: function () {
-			for (var i = 0; i < this.element.children.length; i++) {
-				let top = parseInt(this.element.children[i].style.top) || 0 - this.boxHeight;
-				this.element.children[i].style.top = top + 'px'
-			}
+			// 롤링
+			return new Promise((res,rej)=>{
+				for (var i = 0; i < this.element.children.length; i++) {
+					let top = parseInt(this.element.children[i].style.top) - this.boxHeight;
+					console.log(parseInt(this.element.children[i].style.top))
+					this.element.children[i].style.top = top + 'px'
+				}
+				setTimeout(_=>{
+					res()
+				}, this.options.timeout)
+			})
 		},
 		removePreElement: function () {
 			console.log(this.cursor - 1)
@@ -108,6 +125,7 @@ if ( typeof Object.create !== 'function' ) {
 			autoplay: true,
 			infinite: true,
 			speed: 0.3,
+			timeout: 3,
 			beforeShow: function () {},
 			afterShown: function () {},
 			beforeHide: function () {},
@@ -120,6 +138,7 @@ if ( typeof Object.create !== 'function' ) {
 		autoplay: true,
 		infinite: true,
 		speed: 0.3,
+		timeout: 3,
 		beforeShow: function () {},
 		afterShown: function () {},
 		beforeHide: function () {},
