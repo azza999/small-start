@@ -18,6 +18,7 @@ if ( typeof Object.create !== 'function' ) {
 			this.options = options;
 			this.elementList = [];
 			this.cursor = 0;
+			this.timeout = 3;
 			this.interval = null;
 			this.boxWidth = null;
 			this.boxHeight = null;
@@ -27,7 +28,8 @@ if ( typeof Object.create !== 'function' ) {
 			if (this.options.autoplay === true) {
 				this.play();
 			}
-			
+
+			return this
 		},
 		setup: function () {
 			// setup parent element
@@ -51,62 +53,72 @@ if ( typeof Object.create !== 'function' ) {
 				this.elementList[i].innerHTML = this.list[i];
 				this.elementList[i].classList.add('rolling-list-item');
 			}
-			this.cursor = -1;
-			this.addNextElement();
+			this.cursor = 0;
+
+			this.addElement(this.elementList[this.cursor],this.cursor)
 
 		},
-		play: function () {
-			this.startRoll();
+		play: async function () {
+			return new Promise(async res=>{
+				await this.startRoll();
+				res()
+			})
 		},
 		stop: function () {
 
 		},
-		startRoll: function () {
+		startRoll: async function () {
 			// 추가
 			// 롤링
 			// 지우기
 
-			let self = this
-			return new Promise((res,rej)=>{
-				setTimeout(function() {
-					self.addNextElement();
-					setTimeout(function() {
-						self.rollOnce();
-					}, 50)
-					setTimeout(function() {
-						self.removePreElement();
-						res()
-					}, self.options.speed*1000-1)
-				}, this.options.speed*1000)
+			return new Promise(async (res,rej)=>{
+
+				console.log(this.timeout * 1000)
+				let count = 0
+
+				this.interval = setInterval(_=>{
+					this.rollOnce();
+					count++;
+					if (count >= this.elementList.length - 1) {
+						clearInterval(this.interval)
+					}
+
+				}, this.timeout * 1000)
+
 			})
 			
 		},
-		addNextElement: function () {
+		addElement: function (inner,idx) {
 
 			// 추가
 
 			this.cursor = this.cursor < this.list.length ? this.cursor + 1 : 0;
 			
-			this.element.append(this.elementList[this.cursor]);
-			console.log(this.elementList[this.cursor]);
-			this.elementList[this.cursor].style.position = 'absolute';
-			this.elementList[this.cursor].style.width = this.boxWidth + 'px';
-			this.elementList[this.cursor].style.height = this.boxHeight + 'px';
-			this.elementList[this.cursor].style.top = this.boxHeight * this.cursor + 'px';
-			this.elementList[this.cursor].style.transitionProperty = 'top';
-			this.elementList[this.cursor].style.transitionDuration = this.options.speed + 's';
+			this.element.append(inner);
+			inner.style.position = 'absolute';
+			inner.style.width = this.boxWidth + 'px';
+			inner.style.height = this.boxHeight + 'px';
+			inner.style.top = this.boxHeight * idx + 'px';
+			inner.style.transitionProperty = 'top';
+			inner.style.transitionDuration = this.options.speed + 's';
 		},
 		rollOnce: function () {
 			// 롤링
+			this.addElement(this.elementList[this.cursor],this.cursor)
+			
 			return new Promise((res,rej)=>{
+
 				for (var i = 0; i < this.element.children.length; i++) {
+					console.log(this.element.children[i])
 					let top = parseInt(this.element.children[i].style.top) - this.boxHeight;
 					console.log(parseInt(this.element.children[i].style.top))
 					this.element.children[i].style.top = top + 'px'
 				}
 				setTimeout(_=>{
+					this.removePreElement()
 					res()
-				}, this.options.timeout)
+				}, this.options.timeout * 1000)
 			})
 		},
 		removePreElement: function () {
@@ -131,7 +143,8 @@ if ( typeof Object.create !== 'function' ) {
 			beforeHide: function () {},
 			afterHidden: function () {}
 		}
-		rolling.init(element, list, opt)
+		console.log(rolling.init(element, list, opt))
+		return this
 	}
 
 	window.Rolling.options = {
