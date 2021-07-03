@@ -61,8 +61,8 @@ version | 텍스트로 된 version 문자를 인식하여 정렬 | -V
 
 먼저 /etc/passwd 파일의 구분자인 콜론(:)을 구분자로 지정했고, UID에 해당하는 필드인 3번째 필드를 정렬에 사용할 필드로 사용했다. 또 일반 numeric이 아닌 general-numeric을 정렬에 사용함으로써 UID의 크기에 따라 정렬되도록 하였다.
 
-![결과](/sort.png)
-<p style="text-align: center; color: #999;">결과</p>https://raw.githubusercontent.com/azza999/small-start/main/assets/210701
+![결과](https://github.com/azza999/small-start/blob/main/assets/210701/sort.png?raw=true)
+<p style="text-align: center; color: #999;">결과</p>
 
 ## cut 사용
 
@@ -94,13 +94,13 @@ python indexing처럼 start, end중 한 인자를 비워 start-끝, 처음-end �
 
 -c 옵션을 byte 단위로 수행한다.  
   
-
+  
 <pre><code>-d 'delimiter' -s</code></pre>
 
 출력시 delimiter을 제외하고 출력한다.  
   
-
-
+  
+  
 <pre><code>-d 'delimiter' --output-delimiter=delimiter</code></pre>
 
 출력시 사용할 delimiter을 지정한다.
