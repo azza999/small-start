@@ -2,13 +2,9 @@
 
 ## git bash에서 아이디 비밀번호 저장
 
-<pre>
-<code>
-$ git config --global user.name 계정명
+<pre><code>$ git config --global user.name 계정명
 $ git config --global user.email 이메일
-$ git config credential.helper store
-</code>
-</pre>  
+$ git config credential.helper store</code></pre>
 
 윈도우 검색 > 자격 증명 > window 자격 증명 > github 항목 계정, 패스워드 입력  
 
@@ -23,22 +19,16 @@ or
 
 ### 등록된 remote 확인
 
-<pre><code>
-git remote -v
-</code></pre>
+<pre><code>git remote -v</code></pre>
 
 
 ### remote 등록
 
-<pre><code>
-git remote add remote_name git_url
-</code></pre>
+<pre><code>git remote add remote_name git_url</code></pre>
 
 ### remote 삭제
 
-<pre><code>
-git remote remove remote_name
-</code></pre>
+<pre><code>git remote remove remote_name</code></pre>
 
 
 ## git 스테이징
