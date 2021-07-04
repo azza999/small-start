@@ -75,32 +75,62 @@ end : 끝 부분 지정
 
 가장 간단한 사용법이다. 시작 부분과 끝 부분을 지적하여 해당 부분만을 출력한다.  
 python indexing처럼 start, end중 한 인자를 비워 start-끝, 처음-end 까지 출력이 가능하다.  
-
+<br>
+<br>
 <pre><code>echo "onetwothreefour" | cut -c 1-2,5,7-</code></pre>
 
 또한 위와 같이 사용하여, 여러 부분을 출력할 수 있다.  
-  
-  
-
+<br>
+<br>
 <pre><code>-d 'delimiter' -f start-end</code></pre>
 
 -d : 필드 구분자 지정  
 -f : 필드 번호 지정  
 
 구분자와 필드 번호를 지정하여 원하는 필드를 출력할 수 있다. `-f` 옵션도 `-c`와 같이 사용할 수 있다.  
-  
-  
+<br>
+<br>
 <pre><code>-b, --bytes</code></pre>
 
 -c 옵션을 byte 단위로 수행한다.  
-  
-  
+<br>
+<br>
 <pre><code>-d 'delimiter' -s</code></pre>
 
 출력시 delimiter을 제외하고 출력한다.  
-  
-  
-  
+<br>
+<br>
 <pre><code>-d 'delimiter' --output-delimiter=delimiter</code></pre>
 
 출력시 사용할 delimiter을 지정한다.
+<br>
+<br>
+
+## 리눅스 if 조건문
+
+표현식 | 설명
+--- | ---
+-b file | block 타입 장치 파일이면 참
+-c file | character 타입 장치 파일이면 참
+-d file | 디렉터리 파일이면 참
+-e file | 파일이 존재하면 참
+-f file | 해당 파일이 존재하고, 디렉토리 형태가 아니면 참
+-L file | 심볼릭 링크 파일이면 참
+-h file | 심볼릭 링크 파일이면 참
+-p file | named pipe 파일이면 참
+-S file | 소켓 파일이면 참
+-s file | 파일의 크기가 0보다 크다면 참
+-r file | 파일의 읽기 권한이 있다면 참
+-w file | 파일의 쓰기 권한이 있다면 참
+-x file | 파일의 실행 권한이 있다면 참
+file1 -nt file2 | file1이 file2보다 새로운 파일이면 참
+file1 -ot file2 | file1이 file2보다 오래된 파일이면 참
+file1 -et file2 | file1이 file2과 같은파일이면 참
+-z string | 문자열의 길이가 0이면 참
+-n string | 문자열의 길이가 0이면 참
+string1 = string2 | string1과 string2가 같으면 참
+string1 != string2 | string1과 string2가 다르면 참
+
+[ifTest.sh](https://github.com/azza999/small-start/blob/main/assets/210704/iftest.sh)
+
+위의 쉘 스크립트에서 if 구문을 테스트 해볼 수 있다.
