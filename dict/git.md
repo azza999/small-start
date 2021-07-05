@@ -29,7 +29,31 @@ or
 ### remote 삭제
 
 <pre><code>git remote remove remote_name</code></pre>
+<br>
+<br>
 
+## branch
+
+### branch 생성
+
+<pre><code>git branch branch_name</code></pre>
+
+### branch 목록 확인
+
+<pre><code>git branch -v</code></pre>
+
+### branch 이동
+
+<pre><code>git checkout branch_name</code></pre>
+
+### branch 병합
+
+<pre><code> 기준이 되는 branch로 이동 후
+git merge branch_name
+(fast-forward 방식)</code></pre>
+
+<br>
+<br>
 
 ## git 스테이징
 

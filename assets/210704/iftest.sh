@@ -112,4 +112,6 @@ then
 
 fi
 
+if [ $1 -eq $2 ]
+
 exit
