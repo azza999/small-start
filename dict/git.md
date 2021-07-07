@@ -55,6 +55,26 @@ git merge branch_name
 <br>
 <br>
 
+## reset & revert
+
+### reset
+
+mixed 모드 리셋
+
+<pre><code>git reset HEAD^
+(^: 이전 커밋을 의미, 상대 주소 개념으로 사용 가능 (HEAD^^, HEAD^^^...))</code></pre>
+<br>
+<br>
+
+### revert
+
+이전 상태로 돌아가는 새로운 commit
+
+<pre><code>git revert HEAD
+(되돌아갈 HEAD를 입력)</code></pre>
+
+
+
 ## git 스테이징
 
 git은 세가지의 영역이 있다.
