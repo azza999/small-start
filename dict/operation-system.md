@@ -134,3 +134,17 @@ string1 != string2 | string1과 string2가 다르면 참
 [ifTest.sh](https://github.com/azza999/small-start/blob/main/assets/210704/iftest.sh)
 
 위의 쉘 스크립트에서 if 구문을 테스트 해볼 수 있다.
+<br>
+<br>
+
+
+## linux에서 반복문 사용
+
+반복문은 여느 프로그래밍 언어에서와 같이 for, while 문법을 지원한다.
+
+<pre><code>for variable in list
+do
+	somthing...
+done</code></pre>
+
+list로 활용될 수 있는 것들은 리스트, 배열, 개행(\n)으로 구분된 문자열 등을 사용할 수 있다. 하나씩 variable에 저장되어 실행된다.
