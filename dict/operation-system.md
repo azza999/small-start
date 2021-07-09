@@ -137,6 +137,20 @@ string1 != string2 | string1과 string2가 다르면 참
 <br>
 <br>
 
+## linux list
+
+리눅스 배열 선언시 구분자는 ' ' 공백이다.
+
+<pre><code>list=(a b c)</code></pre>
+<br>
+
+배열 호출시에는 다음과 같이 사용한다.
+
+<pre><code>echo ${list[0]}
+echo ${list[*]}		# 리스트의 모든 원소
+echo ${#list[*]} 	# 리스트의 원소 개수</code></pre>
+<br>
+<br>
 
 ## linux에서 반복문 사용
 
@@ -147,4 +161,30 @@ do
 	somthing...
 done</code></pre>
 
-list로 활용될 수 있는 것들은 리스트, 배열, 개행(\n)으로 구분된 문자열 등을 사용할 수 있다. 하나씩 variable에 저장되어 실행된다.
+list로 활용될 수 있는 것들은 리스트, 개행(\n)으로 구분된 문자열 등을 사용할 수 있다. 하나씩 variable에 저장되어 실행된다.
+<br>
+<br>
+
+## linux shell script에서 파일 수정
+
+리눅스에서 파일을 수정할 때, 보통 vi를 많이 사용한다. 하지만 vi를 사용할 수 없는 스크립트 내부에서 파일을 수정하려면 어떻게 해야할까? 새로운 파일을 작성하거나(>) 파일에 맨 마지막에 내용을 추가하는(>>) 것이 아니라면, 쉘 스크립트에서 내용을 수정하는 것은 `sed`를 통해 이루어진다.
+
+`sed`는 대화형 방식이 아닌 명령형 방식이다. 수정할 내용이 여러개라면 명령을 여러번 수행하여 파일을 수정하는 방식이다.
+
+_1, 3번째줄 확인_
+
+<pre><code>sed -n '1,3p' /etc/passwd</code></pre>
+<br>
+<br>
+
+_특정 단어로 시작하는 행들 추출_
+
+<pre><code>sed -n '/^ftp/p' /etc/passwd</code></pre>
+<br>
+<br>
+
+_단어 치환_
+
+<pre><code>sed -n 's/root/ROOT' </code></pre>
+<br>
+<br>
