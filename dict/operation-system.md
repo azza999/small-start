@@ -130,6 +130,13 @@ file1 -et file2 | file1이 file2과 같은파일이면 참
 -n string | 문자열의 길이가 0이면 참
 string1 = string2 | string1과 string2가 같으면 참
 string1 != string2 | string1과 string2가 다르면 참
+! script | script 부분을 부정
+num1 -eq num2 | num1과 num2가 같다면 참
+num1 -gt num2 | num1이 num2보다 클때 (>) (greater than)
+num1 -lt num2 | num1이 num2보다 작을때 (<) (less-than)
+num1 -ge num2 | num1이 num2보다 크거나 같을 때 (≥) (greater-or-equal)
+num1 -le num2 | num1이 num2보다 작거나 같을 때 (≤) (less-or-equal)
+
 
 [ifTest.sh](https://github.com/azza999/small-start/blob/main/assets/210704/iftest.sh)
 
