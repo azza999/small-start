@@ -14,6 +14,17 @@ or
 
 완료 후 push 요청  
 
+## add
+
+### 기본 사용
+
+<pre><code>git add .</code></pre>
+<br><br>
+
+### add 취소
+
+<pre><code>git reset HEAD</code></pre>
+
 
 ## remote
 
@@ -72,8 +83,22 @@ mixed 모드 리셋
 
 <pre><code>git revert HEAD
 (되돌아갈 HEAD를 입력)</code></pre>
+<br>
+<br>
 
+## git 설정 모음
 
+### git 설정 목록 보기
+
+<pre><code>git config -l [ --system | --local | --global | --worktree ]</code></pre>
+<br>
+<br>
+
+### git 사용 에디터 설정
+
+<pre><code>git config --global core.editor vim | nano | sublimetext | ...</code></pre>
+<br>
+<br>
 
 ## git 스테이징
 
