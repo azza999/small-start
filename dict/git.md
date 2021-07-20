@@ -119,3 +119,15 @@ __Modified__ : 파일이 추가(add, commit)된 이후 스테이징 영역 이�
 __Staged__ : 파일이 Staging 영역에 반영된 상태  
 
 위의 내용은 `git status`를 통해 확인할 수 있다.
+<br><br>
+
+## git default branch 변경
+
+git의 기본적인 default branch는 master이다. github도 동일하게 이를 사용해왔지만, 요즘 이슈인 pc (political correctness)의 영향인지, master(주인)와 slave(노예)의 뜻을 가졌던 master을 main으로 변경했다. 하지만 git에는 여전히 first commit시 자동으로 master가 default branch가 된다.
+
+<pre><code>git add .
+git commit
+
+git branch -m master main</code></pre>
+
+기본적으로 first commit 전에 branch를 바꾸는 방법은 없었다. 대체 방안으로 first commit시 생성되는 branch를 단순히 main으로 바꿔주었다.

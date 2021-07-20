@@ -110,4 +110,25 @@ while True:
 
 키보드 입력값은 정수 혹은 문자열이 될 수 있다.
 `print(keyboard.key_to_scan_codes('up'))` 메서드를 통해 문자열과 키코드 매핑을 확인할 수 있다.
+<br><br>
 
+## 파이썬 push, pop과 list control
+
+```
+# push
+list.append(x)
+
+# pop (i번째 요소 pop 가능)
+list.pop([i])
+
+# i 위치에 x 삽입
+list.extend(i,x)
+
+# x 요소를 삭제, 없으면 Error를 던짐
+list.remove(x)
+```
+<br><br>
+
+## 파이썬 대소비교 정확하지 않을 때 팁
+
+대소비교하는 데이터 타입이 문자열은 아닌지 확인해 보자...
