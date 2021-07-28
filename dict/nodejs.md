@@ -22,8 +22,8 @@ const DBcon = {
 			if (err) {console.log(err)}
 		})
 	},
-	query: function(sql) {
-		return conn.query(sql, callback)
+	query: function(sql, params, callback) {
+		return conn.query(sql, params, callback)
 	}
 }
 
@@ -118,3 +118,7 @@ app.listen(3000);
 ```
 
 요청을 받아들이면, `requestTime`, `veryLoooongWork`라는 미들웨어를 거치고, http://localhost:3000/라는 경로로 요청을 했을 경우 `app.get('/')`라는 미들웨어에 진입하게 된다. veryLoooongWork 미들웨어는 다음 미들웨어로 넘어가기 전에 3초의 시간을 가진다. 또 한가지 주의깊게 봐야할 점은, __한 요청 내에서 req, res 객체는 공유된다는 것이다.__
+<br><br>
+
+## REQUEST 객체
+

@@ -43,3 +43,15 @@ __GET__
 __POST__  
 
  request body를 request header에 담아서 보낸다. request 헤더는 https 사용시 제 3자가 볼 수 없기 때문에 패스워드 등 민감한 정보를 전송하기에 용이하다. 또한 용량에 제한이 없기에 많은 데이터를 보낼 수 있다. 하지만 같은 URL이더라도 이전 request header와 내용이 달라지거나, 새로 페이지를 로드한다면 페이지의 내용이 달라지기 때문에 이를 생각하여 설계해야 한다.
+<br><br>
+
+## Redirect와 forward 방식의 차이
+<br>
+
+### Redirect 방식
+어떤 요청을 처리할 때, 요청을 다른곳으로 보내야 할 경우가 있다. 예를 들어, 로그인하지 않은 client가 글쓰기 페이지에 접근했을 경우, 우리는 해당 유저를 로그인 페이지로 유도해야 한다. 이때 사용하는 것이 바로 `redirect`이다. 유저가 `/board/write` 경로로 접근했을 경우 `/user/login` 페이지로 재요청을 보내게 하는 방식이다. Redirect되면 유저입장에서는 URL이 바뀌고 사이트 이동이 보이므로 자신이 다른 페이지로 이동했다는 것을 알 수 있다. 또한 Server와 Client간의 요청/응답이 각각 이루어지므로 `/board/write`, `/user/login`으로 총 두번의 request와 response가 이루어지게 된다.
+
+### Forward 방식
+Forward 방식은 한 응답에 대해 서버 내에서 다른 URL에 대한 요청을 내놓는 개념이다. 예를 들어 메인 페이지 `/`에 대해 로그인된 유저는 마이페이지 `/user/mypage`를 보여주고, 로그인하지 않은 유저는 게시판 `/board/list`를 보여주는 라우팅 구조라면, 유저는 똑같이 `/`경로에 대해 요청을 보냈지만, 실제로는 `/user/mypage` 혹은 `/board/list`를 보여주는 구조라면, 이는 `/`경로가 `/user/mypage`, `/board/list`로 Forward 된 방식이다. 즉 유저의 입장에서는 자신이 `/` 경로를 요청했다는 것만 알 수 있고, `/`경로로 요청한 후에 어떠한 새로운 request나 response가 이루어지지 않는다.
+<br><br>
+
