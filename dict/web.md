@@ -55,3 +55,32 @@ __POST__
 Forward 방식은 한 응답에 대해 서버 내에서 다른 URL에 대한 요청을 내놓는 개념이다. 예를 들어 메인 페이지 `/`에 대해 로그인된 유저는 마이페이지 `/user/mypage`를 보여주고, 로그인하지 않은 유저는 게시판 `/board/list`를 보여주는 라우팅 구조라면, 유저는 똑같이 `/`경로에 대해 요청을 보냈지만, 실제로는 `/user/mypage` 혹은 `/board/list`를 보여주는 구조라면, 이는 `/`경로가 `/user/mypage`, `/board/list`로 Forward 된 방식이다. 즉 유저의 입장에서는 자신이 `/` 경로를 요청했다는 것만 알 수 있고, `/`경로로 요청한 후에 어떠한 새로운 request나 response가 이루어지지 않는다.
 <br><br>
 
+## URL과 URI의 차이
+
+### URI (Uniform Resource Identifier)
+
+URI는 네트워크 상의 자원을 나타내는 고유 식별자 이고, URL과 URN은 모두 URI에 포함되는 개념이다. 따라서 URI는 유일해야 하며, 다음의 문법을 따라야 한다.(RFC 3986)
+
+```plain
+scheme:[//[user[:password]@]host[:port]][/path][?query][#fragment]
+```
+
+예시
+
+```plain
+ssh:user1:pwpw@192.168.0.100:22
+```
+
+### URL (Uniform Resource Locator)
+
+URL은 우리에게 가장 친숙한 웹 주소 표현 방식이다. 하지만 URL은 웹 주소만을 가리키는 것이 아닌 네트워크상의 모든 위치(Path)를 나타낼 수 있다.
+
+### URN (Uniformed Resource Name)
+
+URN은 해당 인터넷 자원의 이름이다. 주로 `urn:`으로 시작하는 문법을 가지고 있다. 또한 독릭적으로 자원을 지시하는 특성을 가지고 있다.
+
+![URL과 URN](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FAkL2o%2FbtqJptEQJmu%2FomyDDiWIRr99BFKeVIpTt0%2Fimg.png)
+
+### Data URI
+
+주로 `data:image/png:base64,c2Zqc2....`와 같은 형태로 주로 이미지같은 데이터를 문자열로 나타내기 위해 사용한다. URL과 URN에 포함되지는 않지만 URI로 활용되는 대표적인 예시이다.
