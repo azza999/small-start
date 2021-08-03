@@ -69,6 +69,9 @@ router.get('/:category/:boardId', function(req, res, next) {
 __req.body__
 
 ```js
+const bodyParser = require("body-parser")
+app.use(bodyParser.urlencoded({ extended: false }))
+
 router.post('/login_process', function(req, res, next) {
 	console.log(req.body.password)
 })
@@ -78,6 +81,17 @@ router.post('/login_process', function(req, res, next) {
 결과값 : my_passowrd
 
 req.body는 body parser가 설치되어 있어야 사용 가능하다. form에서 method=post로 설정했을 때 사용할 수 있다.
+
+```js
+const bodyParser = require("body-parser")
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+router.post('/login_process', urlencodedParser function(req, res, next) {
+	console.log(req.body.password)
+})
+```
+
+어플리케이션 전체가 아닌 일부 라우팅에서만 사용하고 싶다면, 해당 라우팅에서의 미들웨어로 추가하여 사용할 수 있다. _(일반적으로 추천됨)_
 <br><br>
 
 ## 미들웨어가 도대체 뭐야?
