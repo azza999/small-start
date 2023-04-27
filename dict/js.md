@@ -101,3 +101,9 @@ Object.fromEntries(arr)
 ## Symbol의 사용
 
 Symbol은 라이브러리 등에서 다른 객체가 접근하지 못하도록 하기 위해 사용. 은닉화 패턴과 연관
+
+<br><br>
+
+## canvas resize
+
+js에서 `canvas.width = canvas.width` 등으로 canvas 크기를 수정하면 기존 context는 초기화됨. 이미 그려져 있던 컨텐츠부터, fillStyle같은 속성까지 모두!

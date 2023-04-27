@@ -103,7 +103,7 @@ Passive FTP도 클라이언트의 요청까지는 같다. 하지만 서버는 21
 
 **TFTP**
 
-TFTP는 Trivial FTP로써 UDP 프로토콜로 파일 전송이 이루어진다. 따라서 파일의 무결성을 보장하지는 않지만, 더 빠르고 간단하게 이루어진다.
+TFTP는 Trivial FTP로써 UDP 프로토콜로 파일 전송이 이루어진다. 따라서 파일의 무결성을 보장하지는 않지만, 더 빠르고 간단하게 이루어진다. 주로 원격 kickstart에 사용된다.
 
 * 읽기
 클라이언트는 서버에 파일명과 함꼐 read request를 보내고, 서버는 이에 바로 파일을 보내 준다.
@@ -167,4 +167,14 @@ Lan Card에서 무조건 수용하는 (CPU에 전달하는) 통신이다. CPU와
 
 가장 가까운 노드에 보낼 때 사용하는 통신
 
-네트워크에 연결된 수신 가능한 노드 중 가장 가까운 한 노드에만 데이터를 전송하는 통신이다. 
+네트워크에 연결된 수신 가능한 노드 중 가장 가까운 한 노드에만 데이터를 전송하는 통신이다.
+
+
+## DiffServ\,DSCP
+
+TCP 패킷을 보던 중 DSCP라는 필드를 알아보았다. [KT](http://www.ktword.co.kr/test/view/view.php?m_temp1=2578) [CISCO](https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-packet-marking/10103-dscpvalues.html?dtid=osscdc000283)
+
+Differentiated Service Code Point는 DiffServ의 식별을 위해 마련된 필드다. DiffServ는 QoS(서비스 품질)을 보장하는 방법 중 하나다. IP 헤더에 상대적으로 우선순위가 높은 패킷을 명시하도록 한다. 우선순위가 높은 패킷은 라우터 단에서 우대하여 처리한다. 앞의 세 비트에 우선순위 클래스를 표시하고 그 뒤 두 비트에는 카테고리를 표기한다. 알아보니 딱히 어떤 종류의 패킷이 Low에 할당되고, 어떤 종류의 패킷이 High에 할당되는 지는 정해지지 않은 듯하다. 어차피 ISP에서는 자신들의 패킷을 최우선으로 처리하기를 바라지 않을까...? 아마 인트라넷같은 내부망에서 의미있는 필드인 듯하다.
+
+
+
